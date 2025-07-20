@@ -2,204 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>Calculadora de Rollos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pasto y Alfalfa en Copiapó</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --verde-intenso: #2e7d32;
-      --verde-palido: #a5d6a7;
-      --verde-claro: #e8f5e9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
     body {
-      background: var(--verde-claro);
+      font-family: Arial, sans-serif;
+      background-color: #e8f5e9;
       color: #333;
+      margin: 0;
+      padding: 2rem;
     }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--verde-palido);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 999;
+    h2 {
+      color: #2e7d32;
     }
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: var(--verde-intenso);
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #1b5e20;
-    }
-    .hero {
-      background: url('https://images.unsplash.com/photo-1615484477724-6a8b0f11a148?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      padding-top: 80px;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      max-width: 800px;
-      text-align: center;
-    }
-    section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-      color: var(--verde-intenso);
-    }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .tabs button {
-      background: var(--verde-palido);
-      color: var(--verde-intenso);
-      border: none;
-      padding: 10px 20px;
-      margin: 0 5px;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 5px;
-    }
-    .tabs button.active {
-      background: var(--verde-intenso);
-      color: white;
-    }
-    .galeria {
-      display: none;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .galeria.active {
-      display: flex;
-    }
-    .galeria img {
-      width: 100%;
-      max-width: 300px;
-      margin: 10px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .calculadora input {
-      padding: 10px;
-      margin-right: 10px;
+    input {
+      padding: 0.5rem;
       width: 100px;
     }
-    footer {
-      background: var(--verde-intenso);
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    a {
-      color: var(--verde-intenso);
-    }
-    a:hover {
-      text-decoration: underline;
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div><strong style="color: var(--verde-intenso)">PASTO Y ALFALFA</strong></div>
-      <div>
-        <a href="#quienes">Quiénes somos</a>
-        <a href="#galeria">Galería</a>
-        <a href="#instructivos">Recomendaciones</a>
-        <a href="#comentarios">Comentarios</a>
-        <a href="#calculadora">Calculadora</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Pasto en rollo y alfalfa de calidad para tu hogar, parcela o negocio</h1>
-  </section>
-
-  <section id="quienes">
-    <h2>¿Quiénes somos?</h2>
-    <p>Somos un negocio familiar con más de 15 años de experiencia en la producción y venta de pasto en rollo y alfalfa de alta calidad en la región de Atacama.</p>
-  </section>
-
-  <section id="galeria">
-    <h2>Galería</h2>
-    <div class="tabs">
-      <button class="tab-btn active" onclick="mostrarGaleria('pasto')">Pasto</button>
-      <button class="tab-btn" onclick="mostrarGaleria('alfalfa')">Alfalfa</button>
-    </div>
-    <div class="galeria active" id="galeria-pasto">
-      <img src="IMG-20250719-WA0024.jpg" alt="Pasto 1">
-      <img src="IMG-20250719-WA0025.jpg" alt="Pasto 2">
-    </div>
-    <div class="galeria" id="galeria-alfalfa">
-      <img src="IMG-20250719-WA0023.jpg" alt="Alfalfa 1">
-      <img src="IMG-20250227-WA0038.jpg" alt="Alfalfa 2">
-    </div>
-    <div style="text-align: center; margin-top: 40px;">
-      <h3 style="color: #2e7d32; margin-bottom: 10px;">Paga tu pedido con Mercado Pago</h3>
-      <a href="https://www.mercadopago.cl/checkout/v1/redirect?pref_id=TU_ID_DE_PREFERENCIA" target="_blank">
-        <img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="Pagar con Mercado Pago" style="width:200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      </a>
-    </div>
-  </section>
-
-  <section id="instructivos">
-    <h2>Instructivos y Recomendaciones</h2>
-    <p>Te enseñamos cómo instalar tu pasto, cómo regarlo correctamente y cómo conservar la alfalfa para tus animales.</p>
-  </section>
-
-  <section id="comentarios">
-    <h2>Comentarios de Clientes</h2>
-    <p>“Muy buena calidad, lo instalamos en una tarde y quedó increíble” – Cliente de Copiapó</p>
-  </section>
-
-  <section id="calculadora">
-    <h2>Calculadora de Rollos</h2>
-    <p>Ingresa los metros cuadrados que deseas cubrir:</p>
-    <div class="calculadora">
-      <input type="number" id="metros" placeholder="m²">
-      <button onclick="calcularRollos()">Calcular</button>
-      <p id="resultado"></p>
-    </div>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Escríbenos a <a href="https://wa.me/56912345678">WhatsApp</a> o al correo <a href="mailto:geocalculo@gmail.com">geocalculo@gmail.com</a></p>
-  </section>
-
-  <footer>
-    &copy; 2025 Pasto y Alfalfa en Copiapó. Todos los derechos reservados.
-  </footer>
 
 <section id="calculadora">
   <h2>Calculadora de Rollos</h2>
@@ -244,13 +70,5 @@
   }
 </script>
 
-
-    function mostrarGaleria(tipo) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.galeria').forEach(g => g.classList.remove('active'));
-      document.getElementById(`galeria-${tipo}`).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
 </body>
 </html>
