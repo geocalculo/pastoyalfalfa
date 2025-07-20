@@ -1,74 +1,166 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadora de Rollos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasto y Alfalfa en Copiapó</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #e8f5e9;
-      color: #333;
+    :root {
+      --verde-intenso: #2e7d32;
+      --verde-palido: #a5d6a7;
+      --verde-claro: #e8f5e9;
+    }
+    * {
       margin: 0;
-      padding: 2rem;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
     }
-    h2 {
-      color: #2e7d32;
+    body {
+      background: var(--verde-claro);
+      color: #333;
     }
-    input {
-      padding: 0.5rem;
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--verde-palido);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--verde-intenso);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #1b5e20;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1615484477724-6a8b0f11a148?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      padding-top: 80px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      max-width: 800px;
+      text-align: center;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--verde-intenso);
+    }
+    .calculadora input {
+      padding: 10px;
+      margin-right: 10px;
       width: 100px;
     }
-    label {
-      display: block;
-      margin-bottom: 0.25rem;
+    footer {
+      background: var(--verde-intenso);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <nav>
+      <div><strong style="color: var(--verde-intenso)">PASTO Y ALFALFA</strong></div>
+      <div>
+        <a href="#quienes">Quiénes somos</a>
+        <a href="#galeria">Galería</a>
+        <a href="#instructivos">Recomendaciones</a>
+        <a href="#comentarios">Comentarios</a>
+        <a href="#calculadora">Calculadora</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
 
-<section id="calculadora">
-  <h2>Calculadora de Rollos</h2>
-  <p>Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:</p>
-  <div class="calculadora" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-    <div>
-      <label for="metros">m²:</label>
-      <input type="number" id="metros" placeholder="m²" oninput="calcularDesdeMetros()">
+  <section class="hero">
+    <h1>Pasto en rollo y alfalfa de calidad para tu hogar, parcela o negocio</h1>
+  </section>
+
+  <section id="quienes">
+    <h2>¿Quiénes somos?</h2>
+    <p>Somos un negocio familiar con más de 15 años de experiencia en la producción y venta de pasto en rollo y alfalfa de alta calidad en la región de Atacama.</p>
+  </section>
+
+  <section id="calculadora">
+    <h2>Calculadora de Rollos</h2>
+    <p>Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:</p>
+    <div class="calculadora" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+      <div>
+        <label for="metros">m²:</label>
+        <input type="number" id="metros" placeholder="m²" oninput="calcularDesdeMetros()">
+      </div>
+      <strong style="font-size: 1.5rem;">⇄</strong>
+      <div>
+        <label for="rollos">Rollos:</label>
+        <input type="number" id="rollos" placeholder="rollos" oninput="calcularDesdeRollos()">
+      </div>
     </div>
-    <strong style="font-size: 1.5rem;">⇄</strong>
-    <div>
-      <label for="rollos">Rollos:</label>
-      <input type="number" id="rollos" placeholder="rollos" oninput="calcularDesdeRollos()">
-    </div>
-  </div>
-  <p id="resultado" style="margin-top: 1rem; font-weight: bold;"></p>
-</section>
+    <p id="resultado" style="margin-top: 1rem; font-weight: bold;"></p>
+  </section>
 
-<script>
-  function calcularDesdeMetros() {
-    const m2 = parseFloat(document.getElementById('metros').value);
-    if (isNaN(m2) || m2 <= 0) {
-      document.getElementById('resultado').innerText = '';
-      return;
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Escríbenos a <a href="mailto:geocalculo@gmail.com">geocalculo@gmail.com</a> o por WhatsApp al +56 9 XXXX XXXX.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Pasto y Alfalfa en Copiapó. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    function calcularDesdeMetros() {
+      const m2 = parseFloat(document.getElementById('metros').value);
+      if (isNaN(m2) || m2 <= 0) {
+        document.getElementById('resultado').innerText = '';
+        return;
+      }
+      const rollos = Math.ceil(m2 / 0.47);
+      const precio = rollos * 3500;
+      document.getElementById('rollos').value = rollos;
+      document.getElementById('resultado').innerText = `Necesitas aproximadamente ${rollos} rollos. Valor estimado: $${precio.toLocaleString('es-CL')}`;
     }
-    const rollos = Math.ceil(m2 / 0.47);
-    const precio = rollos * 3500;
-    document.getElementById('rollos').value = rollos;
-    document.getElementById('resultado').innerText = `Necesitas aproximadamente ${rollos} rollos. Valor estimado: $${precio.toLocaleString('es-CL')}`;
-  }
 
-  function calcularDesdeRollos() {
-    const rollos = parseInt(document.getElementById('rollos').value);
-    if (isNaN(rollos) || rollos <= 0) {
-      document.getElementById('resultado').innerText = '';
-      return;
+    function calcularDesdeRollos() {
+      const rollos = parseInt(document.getElementById('rollos').value);
+      if (isNaN(rollos) || rollos <= 0) {
+        document.getElementById('resultado').innerText = '';
+        return;
+      }
+      const m2 = (rollos * 0.47).toFixed(2);
+      const precio = rollos * 3500;
+      document.getElementById('metros').value = m2;
+      document.getElementById('resultado').innerText = `Cubrirás aproximadamente ${m2} m². Valor estimado: $${precio.toLocaleString('es-CL')}`;
     }
-    const m2 = (rollos * 0.47).toFixed(2);
-    const precio = rollos * 3500;
-    document.getElementById('metros').value = m2;
-    document.getElementById('resultado').innerText = `Cubrirás aproximadamente ${m2} m². Valor estimado: $${precio.toLocaleString('es-CL')}`;
-  }
-</script>
-
+  </script>
 </body>
 </html>
