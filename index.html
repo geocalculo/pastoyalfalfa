@@ -201,17 +201,49 @@
     &copy; 2025 Pasto y Alfalfa en Copiapó. Todos los derechos reservados.
   </footer>
 
-  <script>
-    function calcularRollos() {
-      const m2 = parseFloat(document.getElementById('metros').value);
-      if (isNaN(m2) || m2 <= 0) {
-        document.getElementById('resultado').innerText = 'Ingresa un valor válido';
-        return;
-      }
-      const rollos = Math.ceil(m2 / 0.47);
-      const precio = rollos * 3500;
-      document.getElementById('resultado').innerText = `Necesitas aproximadamente ${rollos} rollos. Valor estimado: $${precio.toLocaleString('es-CL')}`;
+<section id="calculadora">
+  <h2>Calculadora de Rollos</h2>
+  <p>Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:</p>
+  <div class="calculadora" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+    <div>
+      <label for="metros">m²:</label>
+      <input type="number" id="metros" placeholder="m²" oninput="calcularDesdeMetros()">
+    </div>
+    <strong style="font-size: 1.5rem;">⇄</strong>
+    <div>
+      <label for="rollos">Rollos:</label>
+      <input type="number" id="rollos" placeholder="rollos" oninput="calcularDesdeRollos()">
+    </div>
+  </div>
+  <p id="resultado" style="margin-top: 1rem; font-weight: bold;"></p>
+</section>
+
+<script>
+  function calcularDesdeMetros() {
+    const m2 = parseFloat(document.getElementById('metros').value);
+    if (isNaN(m2) || m2 <= 0) {
+      document.getElementById('resultado').innerText = '';
+      return;
     }
+    const rollos = Math.ceil(m2 / 0.47);
+    const precio = rollos * 3500;
+    document.getElementById('rollos').value = rollos;
+    document.getElementById('resultado').innerText = `Necesitas aproximadamente ${rollos} rollos. Valor estimado: $${precio.toLocaleString('es-CL')}`;
+  }
+
+  function calcularDesdeRollos() {
+    const rollos = parseInt(document.getElementById('rollos').value);
+    if (isNaN(rollos) || rollos <= 0) {
+      document.getElementById('resultado').innerText = '';
+      return;
+    }
+    const m2 = (rollos * 0.47).toFixed(2);
+    const precio = rollos * 3500;
+    document.getElementById('metros').value = m2;
+    document.getElementById('resultado').innerText = `Cubrirás aproximadamente ${m2} m². Valor estimado: $${precio.toLocaleString('es-CL')}`;
+  }
+</script>
+
 
     function mostrarGaleria(tipo) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
