@@ -2,171 +2,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9808759273857516"
-     crossorigin="anonymous">  
-  </script>
-
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pasto y Alfalfa en Copiapó</title>
+  <title>Pasto y Alfalfa</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --verde-intenso: #2e7d32;
-      --verde-palido: #a5d6a7;
-      --verde-claro: #e8f5e9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-    body {
-      background: var(--verde-claro);
-      color: #333;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--verde-palido);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 999;
-    }
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: var(--verde-intenso);
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #1b5e20;
-    }
-    .hero {
-      background: url('https://images.unsplash.com/photo-1615484477724-6a8b0f11a148?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      padding-top: 80px;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      max-width: 800px;
-      text-align: center;
-    }
-    section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-      color: var(--verde-intenso);
-    }
-    .calculadora input {
-      padding: 10px;
-      margin-right: 10px;
-      width: 100px;
-    }
-    footer {
-      background: var(--verde-intenso);
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
-  </style>
+:root {
+  --verde-intenso: #2e7d32;
+  --verde-palido: #a5d6a7;
+  --verde-claro: #e8f5e9;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  background: var(--verde-claro);
+  color: #333;
+}
+section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--verde-intenso);
+}
+header {
+  height: 400px;
+  background: #ccc url('img/alfalfa2.jpg') center/cover no-repeat;
+}
+.carousel {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.slides img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2em;
+  padding: 0 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+.calculator input {
+  padding: 10px;
+  margin-right: 10px;
+  width: 100px;
+}
+footer {
+  background: var(--verde-intenso);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+</style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div><strong style="color: var(--verde-intenso)">PASTO Y ALFALFA</strong></div>
-      <div>
-        <a href="#quienes">Quiénes somos</a>
-        <a href="#galeria">Galería</a>
-        <a href="#instructivos">Recomendaciones</a>
-        <a href="#comentarios">Comentarios</a>
-        <a href="#calculadora">Calculadora</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>Pasto en rollo y alfalfa de calidad para tu hogar, parcela o negocio</h1>
-  </section>
 
-  <section id="quienes">
-    <h2>¿Quiénes somos?</h2>
-    <p>Somos un negocio familiar con más de 15 años de experiencia en la producción y venta de pasto en rollo y alfalfa de alta calidad en la región de Atacama.</p>
-  </section>
+<header></header>
 
-  <section id="calculadora">
+
+<section id="galeria">
+    <h2>Galería de Imágenes</h2>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <span onclick="mostrarCategoria('pasto')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Pasto en Rollo</span>
+        <span onclick="mostrarCategoria('alfalfa')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Alfalfa</span>
+    </div>
+    <div id="galeria-pasto" class="grupo-fotos" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <img src="img/pasto1.jpg" alt="Pasto 1" style="max-width: 48%; border-radius: 8px;">
+        <img src="img/pasto2.jpg" alt="Pasto 2" style="max-width: 48%; border-radius: 8px;">
+    </div>
+    <div id="galeria-alfalfa" class="grupo-fotos" style="display: none; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <img src="img/alfalfa1.jpg" alt="Alfalfa 1" style="max-width: 48%; border-radius: 8px;">
+        <img src="img/alfalfa2.jpg" alt="Alfalfa 2" style="max-width: 48%; border-radius: 8px;">
+    </div>
+</section>
+
+
+<section id="calculadora">
     <h2>Calculadora de Rollos</h2>
     <p>Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:</p>
-    <div class="calculadora" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-      <div>
-        <label for="metros">m²:</label>
-        <input type="number" id="metros" placeholder="m²" oninput="calcularDesdeMetros()">
-      </div>
-      <strong style="font-size: 1.5rem;">⇄</strong>
-      <div>
+    <div class="calculadora" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+        <label for="m2">m²:</label>
+        <input type="number" id="m2" placeholder="m²" oninput="m2ToRollos()" />
+        <span style="font-size: 1.5rem;">⇄</span>
         <label for="rollos">Rollos:</label>
-        <input type="number" id="rollos" placeholder="rollos" oninput="calcularDesdeRollos()">
-      </div>
+        <input type="number" id="rollos" placeholder="rollos" oninput="rollosToM2()" />
     </div>
-    <p id="resultado" style="margin-top: 1rem; font-weight: bold;"></p>
-  </section>
+    <p id="resultado" style="margin-top: 20px; font-weight: bold; text-align: center;"></p>
+</section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Escríbenos a <a href="mailto:geocalculo@gmail.com">geocalculo@gmail.com</a> o por WhatsApp al +56 9 8596 2740</p>
-  </section>
+<section id="recomendaciones">
+    <h2>Recomendaciones Generales</h2>
+    <ul>
+        <li>Instalar el pasto lo antes posible tras la entrega.</li>
+        <li>Mantenerlo húmedo constantemente durante los primeros días.</li>
+        <li>Cortar el pasto una vez enraizado (7 a 10 días aprox).</li>
+    </ul>
+</section>
 
-  <footer>
-    &copy; 2025 Pasto y Alfalfa en Copiapó. Todos los derechos reservados.
-  </footer>
+<section id="contacto">
+    <h2>Información de Contacto</h2>
 
-  <script>
-    function calcularDesdeMetros() {
-      const m2 = parseFloat(document.getElementById('metros').value);
-      if (isNaN(m2) || m2 <= 0) {
-        document.getElementById('resultado').innerText = '';
-        return;
-      }
-      const rollos = Math.ceil(m2 / 0.47);
-      const precio = rollos * 3500;
-      document.getElementById('rollos').value = rollos;
-      document.getElementById('resultado').innerText = `Necesitas aproximadamente ${rollos} rollos. Valor estimado: $${precio.toLocaleString('es-CL')}`;
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/56985962740" target="_blank">Enviar mensaje</a></p>
+    <p><strong>Email:</strong> geocalculo@gmail.com</p>
+</section>
+
+
+
+<script>
+    function mostrarCategoria(categoria) {
+        const pasto = document.getElementById('galeria-pasto');
+        const alfalfa = document.getElementById('galeria-alfalfa');
+        if (categoria === 'pasto') {
+            pasto.style.display = 'flex';
+            alfalfa.style.display = 'none';
+        } else if (categoria === 'alfalfa') {
+            alfalfa.style.display = 'flex';
+            pasto.style.display = 'none';
+        }
     }
+</script>
 
-    function calcularDesdeRollos() {
-      const rollos = parseInt(document.getElementById('rollos').value);
-      if (isNaN(rollos) || rollos <= 0) {
-        document.getElementById('resultado').innerText = '';
-        return;
-      }
-      const m2 = (rollos * 0.47).toFixed(2);
-      const precio = rollos * 3500;
-      document.getElementById('metros').value = m2;
-      document.getElementById('resultado').innerText = `Cubrirás aproximadamente ${m2} m². Valor estimado: $${precio.toLocaleString('es-CL')}`;
-    }
-  </script>
 </body>
 </html>
