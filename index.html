@@ -7,17 +7,115 @@
   <title>Pasto y Alfalfa</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-:root {
-  --verde-intenso: #2e7d32;
-  --verde-palido: #a5d6a7;
-  --verde-claro: #e8f5e9;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
+    :root {
+      --verde-intenso: #2e7d32;
+      --verde-palido: #a5d6a7;
+      --verde-claro: #e8f5e9;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    body {
+      background: var(--verde-claro);
+      color: #333;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--verde-intenso);
+    }
+    header {
+      height: 400px;
+      background: #ccc url('img/alfalfa2.jpg') center/cover no-repeat;
+    }
+    .grupo-fotos {
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .calculadora {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .calculadora input {
+      padding: 10px;
+      margin-right: 10px;
+      width: 100px;
+    }
+    footer {
+      background: var(--verde-intenso);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header></header>
+
+<section id="galeria">
+  <h2>Galería de Imágenes</h2>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span onclick="mostrarCategoria('pasto')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Pasto en Rollo</span>
+    <span onclick="mostrarCategoria('alfalfa')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Alfalfa</span>
+  </div>
+  <div id="galeria-pasto" class="grupo-fotos" style="display: flex;">
+    <img src="img/pasto1.jpg" alt="Pasto 1" style="max-width: 48%; border-radius: 8px;">
+    <img src="img/pasto2.jpg" alt="Pasto 2" style="max-width: 48%; border-radius: 8px;">
+  </div>
+  <div id="galeria-alfalfa" class="grupo-fotos" style="display: none;">
+    <img src="img/alfalfa1.jpg" alt="Alfalfa 1" style="max-width: 48%; border-radius: 8px;">
+    <img src="img/alfalfa2.jpg" alt="Alfalfa 2" style="max-width: 48%; border-radius: 8px;">
+  </div>
+</section>
+
+<section id="calculadora">
+  <h2>Calculadora de Rollos</h2>
+  <p style="text-align: center;">Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:</p>
+  <div class="calculadora">
+    <label for="m2">m²:</label>
+    <input type="number" id="m2" placeholder="m²" oninput="m2ToRollos()" />
+    <span style="font-size: 1.5rem;">⇄</span>
+    <label for="rollos">Rollos:</label>
+    <input type="number" id="rollos" placeholder="rollos" oninput="rollosToM2()" />
+  </div>
+  <p id="resultado" style="margin-top: 20px; font-weight: bold; text-align: center;"></p>
+</section>
+
+<section id="recomendaciones">
+  <h2>Recomendaciones Generales</h2>
+  <ul style="line-height: 1.8;">
+    <li>Instalar el pasto lo antes posible tras la entrega.</li>
+    <li>Mantenerlo húmedo constantemente durante los primeros días.</li>
+    <li>Cortar el pasto una vez enraizado (7 a 10 días aprox).</li>
+  </ul>
+</section>
+
+<section id="contacto">
+  <h2>Información de Contacto</h2>
+  <p style="text-align: center;">
+    Escríbenos a <a href="mailto:geocalculo@gmail.com">geocalculo@gmail.com</a><br>
+    o por WhatsApp al <a href="https://wa.me/56985962740" target="_blank">+56 9 8596 2740</a>
+  </p>
+</section>
+
+<footer>
+  &copy; 2025 Pasto y Alfalfa en Copiapó. Todos los derechos reservados.
+</footer>
 
 <script>
   function m2ToRollos() {
@@ -47,138 +145,13 @@
     document.getElementById('resultado').innerText =
       `Cubrirás aproximadamente ${m2} m². Valor estimado: $${precio.toLocaleString('es-CL')}`;
   }
-</script>
 
-    
-body {
-  background: var(--verde-claro);
-  color: #333;
-}
-section {
-  padding: 80px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-align: center;
-  color: var(--verde-intenso);
-}
-header {
-  height: 400px;
-  background: #ccc url('img/alfalfa2.jpg') center/cover no-repeat;
-}
-.carousel {
-  position: relative;
-  max-width: 100%;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-.slides img {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-}
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 2em;
-  padding: 0 10px;
-  cursor: pointer;
-  z-index: 10;
-}
-.prev { left: 10px; }
-.next { right: 10px; }
-.calculator input {
-  padding: 10px;
-  margin-right: 10px;
-  width: 100px;
-}
-footer {
-  background: var(--verde-intenso);
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-}
-</style>
-</head>
-<body>
-
-
-<header></header>
-
-
-<section id="galeria">
-    <h2>Galería de Imágenes</h2>
-    <div style="text-align: center; margin-bottom: 30px;">
-        <span onclick="mostrarCategoria('pasto')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Pasto en Rollo</span>
-        <span onclick="mostrarCategoria('alfalfa')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Alfalfa</span>
-    </div>
-    <div id="galeria-pasto" class="grupo-fotos" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-        <img src="img/pasto1.jpg" alt="Pasto 1" style="max-width: 48%; border-radius: 8px;">
-        <img src="img/pasto2.jpg" alt="Pasto 2" style="max-width: 48%; border-radius: 8px;">
-    </div>
-    <div id="galeria-alfalfa" class="grupo-fotos" style="display: none; justify-content: center; gap: 20px; flex-wrap: wrap;">
-        <img src="img/alfalfa1.jpg" alt="Alfalfa 1" style="max-width: 48%; border-radius: 8px;">
-        <img src="img/alfalfa2.jpg" alt="Alfalfa 2" style="max-width: 48%; border-radius: 8px;">
-    </div>
-</section>
-
-
-<section id="calculadora">
-    <h2>Calculadora de Rollos</h2>
-    <p>Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:</p>
-    <div class="calculadora" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
-        <label for="m2">m²:</label>
-        <input type="number" id="m2" placeholder="m²" oninput="m2ToRollos()" />
-        <span style="font-size: 1.5rem;">⇄</span>
-        <label for="rollos">Rollos:</label>
-        <input type="number" id="rollos" placeholder="rollos" oninput="rollosToM2()" />
-    </div>
-    <p id="resultado" style="margin-top: 20px; font-weight: bold; text-align: center;"></p>
-</section>
-
-<section id="recomendaciones">
-    <h2>Recomendaciones Generales</h2>
-    <ul>
-        <li>Instalar el pasto lo antes posible tras la entrega.</li>
-        <li>Mantenerlo húmedo constantemente durante los primeros días.</li>
-        <li>Cortar el pasto una vez enraizado (7 a 10 días aprox).</li>
-    </ul>
-</section>
-
-<section id="contacto">
-    <h2>Información de Contacto</h2>
-
-    <p><strong>WhatsApp:</strong> <a href="https://wa.me/56985962740" target="_blank">Enviar mensaje</a></p>
-    <p><strong>Email:</strong> geocalculo@gmail.com</p>
-</section>
-
-
-
-<script>
-    function mostrarCategoria(categoria) {
-        const pasto = document.getElementById('galeria-pasto');
-        const alfalfa = document.getElementById('galeria-alfalfa');
-        if (categoria === 'pasto') {
-            pasto.style.display = 'flex';
-            alfalfa.style.display = 'none';
-        } else if (categoria === 'alfalfa') {
-            alfalfa.style.display = 'flex';
-            pasto.style.display = 'none';
-        }
-    }
+  function mostrarCategoria(categoria) {
+    const pasto = document.getElementById('galeria-pasto');
+    const alfalfa = document.getElementById('galeria-alfalfa');
+    pasto.style.display = (categoria === 'pasto') ? 'flex' : 'none';
+    alfalfa.style.display = (categoria === 'alfalfa') ? 'flex' : 'none';
+  }
 </script>
 
 </body>
