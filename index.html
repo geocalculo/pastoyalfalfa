@@ -18,6 +18,38 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
+
+<script>
+  function m2ToRollos() {
+    let m2 = parseFloat(document.getElementById('m2').value);
+    if (isNaN(m2) || m2 <= 0) {
+      document.getElementById('rollos').value = "";
+      document.getElementById('resultado').innerText = "";
+      return;
+    }
+    let rollos = Math.ceil(m2 / 0.47);
+    let precio = rollos * 3500;
+    document.getElementById('rollos').value = rollos;
+    document.getElementById('resultado').innerText =
+      `Necesitas aproximadamente ${rollos} rollos. Valor estimado: $${precio.toLocaleString('es-CL')}`;
+  }
+
+  function rollosToM2() {
+    let rollos = parseInt(document.getElementById('rollos').value);
+    if (isNaN(rollos) || rollos <= 0) {
+      document.getElementById('m2').value = "";
+      document.getElementById('resultado').innerText = "";
+      return;
+    }
+    let m2 = (rollos * 0.47).toFixed(2);
+    let precio = rollos * 3500;
+    document.getElementById('m2').value = m2;
+    document.getElementById('resultado').innerText =
+      `Cubrirás aproximadamente ${m2} m². Valor estimado: $${precio.toLocaleString('es-CL')}`;
+  }
+</script>
+
+    
 body {
   background: var(--verde-claro);
   color: #333;
