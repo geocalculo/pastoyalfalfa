@@ -21,6 +21,41 @@
       background: var(--verde-claro);
       color: #333;
     }
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--verde-intenso);
+    }
+    .grupo-fotos {
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .calculadora {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .calculadora input {
+      padding: 10px;
+      margin-right: 10px;
+      width: 100px;
+    }
+    footer {
+      background: var(--verde-intenso);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
     .video-header {
       position: relative;
       width: 100%;
@@ -65,6 +100,95 @@
     <p>Directo del campo a tu jardín</p>
   </div>
 </header>
+
+<section id="galeria">
+  <h2>Galería de Imágenes</h2>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <span onclick="mostrarCategoria('pasto')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Pasto en Rollo</span>
+    <span onclick="mostrarCategoria('alfalfa')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Alfalfa</span>
+  </div>
+  <div id="galeria-pasto" class="grupo-fotos" style="display: flex;">
+    <img src="img/pasto1.jpg" alt="Pasto 1" style="max-width: 48%; border-radius: 8px;">
+    <img src="img/pasto2.jpg" alt="Pasto 2" style="max-width: 48%; border-radius: 8px;">
+  </div>
+  <div id="galeria-alfalfa" class="grupo-fotos" style="display: none;">
+    <img src="img/alfalfa1.jpg" alt="Alfalfa 1" style="max-width: 48%; border-radius: 8px;">
+    <img src="img/alfalfa2.jpg" alt="Alfalfa 2" style="max-width: 48%; border-radius: 8px;">
+  </div>
+</section>
+
+<section id="calculadora">
+  <h2>Calculadora de Rollos</h2>
+  <p style="text-align: center;">Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:</p>
+  <div class="calculadora">
+    <label for="m2">m²:</label>
+    <input type="number" id="m2" placeholder="m²" oninput="m2ToRollos()" />
+    <span style="font-size: 1.5rem;">⇄</span>
+    <label for="rollos">Rollos:</label>
+    <input type="number" id="rollos" placeholder="rollos" oninput="rollosToM2()" />
+  </div>
+  <p id="resultado" style="margin-top: 20px; font-weight: bold; text-align: center;"></p>
+</section>
+
+<section id="recomendaciones">
+  <h2>Recomendaciones Generales</h2>
+  <ul style="line-height: 1.8;">
+    <li>Previo a la instalación prepara el terreno, debe estar nivelado, rastrillado y húmedo.</li>
+    <li>Instalar el pasto lo antes posible tras la entrega.</li>
+    <li>Apisonar de manera de no dejar aire entre el pastelón y el suelo.</li>   
+    <li>Aplicar riego en la mañana y en la noche durante los primeros 15 días.</li>
+    <li>Cortar el pasto una vez enraizado (7 a 10 días aprox).</li>
+  </ul>
+</section>
+
+<section id="contacto">
+  <h2>Información de Contacto</h2>
+  <p style="text-align: center;">
+    Escríbenos a <a href="mailto:geocalculo@gmail.com">geocalculo@gmail.com</a><br>
+    o por WhatsApp al <a href="https://wa.me/56985962740" target="_blank">+56 9 8596 2740</a>
+  </p>
+</section>
+
+<footer>
+  &copy; 2025 Pasto y Alfalfa en Copiapó. Todos los derechos reservados.
+</footer>
+
+<script>
+  function m2ToRollos() {
+    let m2 = parseFloat(document.getElementById('m2').value);
+    if (isNaN(m2) || m2 <= 0) {
+      document.getElementById('rollos').value = "";
+      document.getElementById('resultado').innerText = "";
+      return;
+    }
+    let rollos = Math.ceil(m2 / 0.47);
+    let precio = rollos * 3500;
+    document.getElementById('rollos').value = rollos;
+    document.getElementById('resultado').innerText =
+      `Necesitas aproximadamente ${rollos} rollos. Valor estimado: $${precio.toLocaleString('es-CL')}`;
+  }
+
+  function rollosToM2() {
+    let rollos = parseInt(document.getElementById('rollos').value);
+    if (isNaN(rollos) || rollos <= 0) {
+      document.getElementById('m2').value = "";
+      document.getElementById('resultado').innerText = "";
+      return;
+    }
+    let m2 = (rollos * 0.47).toFixed(2);
+    let precio = rollos * 3500;
+    document.getElementById('m2').value = m2;
+    document.getElementById('resultado').innerText =
+      `Cubrirás aproximadamente ${m2} m². Valor estimado: $${precio.toLocaleString('es-CL')}`;
+  }
+
+  function mostrarCategoria(categoria) {
+    const pasto = document.getElementById('galeria-pasto');
+    const alfalfa = document.getElementById('galeria-alfalfa');
+    pasto.style.display = (categoria === 'pasto') ? 'flex' : 'none';
+    alfalfa.style.display = (categoria === 'alfalfa') ? 'flex' : 'none';
+  }
+</script>
 
 </body>
 </html>
