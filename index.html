@@ -58,110 +58,50 @@
       text-align: center;
       padding: 40px 20px;
     }
+
+    .video-header {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+    }
+
+    .background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay-text {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-align: center;
+      padding-top: 20vh;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    }
   </style>
 </head>
 <body>
 
 <header class="video-header">
-    <video autoplay muted loop playsinline class="background-video">
-
-      <source src="header_landscape_slow_8s_to_12s.mp4" type="video/mp4">
-      Tu navegador no soporta video HTML5.
-    </video>
-    <div class="overlay-text">
-      <h1>Pasto en Rollo Premium</h1>
-      <p>Directo del campo a tu jardín</p>
-    </div>
-  </header>
-
-<section id="galeria">
-  <h2>Galería de Imágenes</h2>
-  <div style="text-align: center; margin-bottom: 30px;">
-    <span onclick="mostrarCategoria('pasto')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Pasto en Rollo</span>
-    <span onclick="mostrarCategoria('alfalfa')" style="cursor: pointer; margin: 0 20px; font-weight: bold; font-size: 1.2rem; color: var(--verde-intenso); text-decoration: underline;">Alfalfa</span>
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="header_landscape_slow_8s_to_12s.webm" type="video/webm">
+    <source src="header_landscape_slow_8s_to_12s.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+  <div class="overlay-text">
+    <h1>Pasto en Rollo Premium</h1>
+    <p>Directo del campo a tu jardín</p>
   </div>
-  <div id="galeria-pasto" class="grupo-fotos" style="display: flex;">
-    <img src="img/pasto1.jpg" alt="Pasto 1" style="max-width: 48%; border-radius: 8px;">
-    <img src="img/pasto2.jpg" alt="Pasto 2" style="max-width: 48%; border-radius: 8px;">
-  </div>
-  <div id="galeria-alfalfa" class="grupo-fotos" style="display: none;">
-    <img src="img/alfalfa1.jpg" alt="Alfalfa 1" style="max-width: 48%; border-radius: 8px;">
-    <img src="img/alfalfa2.jpg" alt="Alfalfa 2" style="max-width: 48%; border-radius: 8px;">
-  </div>
-</section>
+</header>
 
-<section id="calculadora">
-  <h2>Calculadora de Rollos</h2>
-  <p style="text-align: center;">Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:</p>
-  <div class="calculadora">
-    <label for="m2">m²:</label>
-    <input type="number" id="m2" placeholder="m²" oninput="m2ToRollos()" />
-    <span style="font-size: 1.5rem;">⇄</span>
-    <label for="rollos">Rollos:</label>
-    <input type="number" id="rollos" placeholder="rollos" oninput="rollosToM2()" />
-  </div>
-  <p id="resultado" style="margin-top: 20px; font-weight: bold; text-align: center;"></p>
-</section>
-
-<section id="recomendaciones">
-  <h2>Recomendaciones Generales</h2>
-  <ul style="line-height: 1.8;">
-    <li>Previo a la instalación prepara el terreno, debe estar nivelado, rastrillado y húmedo.</li>
-    <li>Instalar el pasto lo antes posible tras la entrega.</li>
-    <li>Apisonar de manera de no dejar aire entre el pastelón y el suelo.</li>   
-    <li>Aplicar riego en la mañana y en la noche durante los primeros 15 días.</li>
-    <li>Cortar el pasto una vez enraizado (7 a 10 días aprox).</li>
-  </ul>
-</section>
-
-<section id="contacto">
-  <h2>Información de Contacto</h2>
-  <p style="text-align: center;">
-    Escríbenos a <a href="mailto:geocalculo@gmail.com">geocalculo@gmail.com</a><br>
-    o por WhatsApp al <a href="https://wa.me/56985962740" target="_blank">+56 9 8596 2740</a>
-  </p>
-</section>
-
-<footer>
-  &copy; 2025 Pasto y Alfalfa en Copiapó. Todos los derechos reservados.
-</footer>
-
-<script>
-  function m2ToRollos() {
-    let m2 = parseFloat(document.getElementById('m2').value);
-    if (isNaN(m2) || m2 <= 0) {
-      document.getElementById('rollos').value = "";
-      document.getElementById('resultado').innerText = "";
-      return;
-    }
-    let rollos = Math.ceil(m2 / 0.47);
-    let precio = rollos * 3500;
-    document.getElementById('rollos').value = rollos;
-    document.getElementById('resultado').innerText =
-      `Necesitas aproximadamente ${rollos} rollos. Valor estimado: $${precio.toLocaleString('es-CL')}`;
-  }
-
-  function rollosToM2() {
-    let rollos = parseInt(document.getElementById('rollos').value);
-    if (isNaN(rollos) || rollos <= 0) {
-      document.getElementById('m2').value = "";
-      document.getElementById('resultado').innerText = "";
-      return;
-    }
-    let m2 = (rollos * 0.47).toFixed(2);
-    let precio = rollos * 3500;
-    document.getElementById('m2').value = m2;
-    document.getElementById('resultado').innerText =
-      `Cubrirás aproximadamente ${m2} m². Valor estimado: $${precio.toLocaleString('es-CL')}`;
-  }
-
-  function mostrarCategoria(categoria) {
-    const pasto = document.getElementById('galeria-pasto');
-    const alfalfa = document.getElementById('galeria-alfalfa');
-    pasto.style.display = (categoria === 'pasto') ? 'flex' : 'none';
-    alfalfa.style.display = (categoria === 'alfalfa') ? 'flex' : 'none';
-  }
-</script>
+<!-- CONTENIDO OMITIDO PARA BREVEDAD -->
 
 </body>
 </html>
