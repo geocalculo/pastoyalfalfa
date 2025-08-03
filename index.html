@@ -121,26 +121,28 @@
   </div>
 </section>
 
+
 <section id="calculadora">
   <h2>Calculadora de Rollos</h2>
   <p style="text-align: center;">
     Ingresa los metros cuadrados que deseas cubrir o la cantidad de rollos para saber el área:
   </p>
-  <div class="calculadora" style="text-align: center;">
-    <div style="margin-bottom: 15px;">
+  <div class="calculadora" style="flex-direction: column; align-items: center;">
+    <div style="margin-bottom: 15px; text-align: center;">
       <label for="m2">m²:</label><br>
       <input type="number" id="m2" placeholder="m²" oninput="m2ToRollos()" />
     </div>
 
     <div style="font-size: 1.5rem; margin-bottom: 15px;">⇄</div>
 
-    <div>
+    <div style="text-align: center;">
       <label for="rollos">Rollos:</label><br>
       <input type="number" id="rollos" placeholder="rollos" oninput="rollosToM2()" />
     </div>
   </div>
   <p id="resultado" style="margin-top: 20px; font-weight: bold; text-align: center;"></p>
 </section>
+
 
 
 <section id="recomendaciones">
